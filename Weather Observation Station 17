@@ -1,0 +1,12 @@
+WITH small as (
+
+SELECT
+      MIN(LAT_N) as smallest
+FROM  STATION
+WHERE LAT_N > 38.778
+)
+
+SELECT
+      CAST(LONG_W as DECIMAL(10,4)) as LONG_W
+FROM  STATION st
+JOIN  small s ON s.smallest = st.LAT_N
