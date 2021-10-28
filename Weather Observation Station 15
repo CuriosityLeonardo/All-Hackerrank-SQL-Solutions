@@ -1,0 +1,14 @@
+WITH LAT_N_Largest as (
+
+SELECT
+      MAX(LAT_N) as MAXLAT_N
+FROM  STATION
+WHERE LAT_N < 137.2345
+    
+)
+
+SELECT
+       CAST(LONG_W as DECIMAL(10,4)) as LONG_W
+FROM   STATION s
+JOIN   LAT_N_Largest l ON l.MAXLAT_N = s.LAT_N
+;
