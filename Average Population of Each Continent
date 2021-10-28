@@ -1,0 +1,6 @@
+SELECT
+       CONTINENT,
+       AVG(c.POPULATION)
+FROM   CITY c
+JOIN   Country co ON co.Code = c.CountryCode
+GROUP BY CONTINENT
