@@ -1,0 +1,5 @@
+SELECT
+      SUM(c.POPULATION)
+FROM  CITY c
+JOIN  COUNTRY co ON co.Code = c.CountryCode
+WHERE co.CONTINENT = 'Asia'
