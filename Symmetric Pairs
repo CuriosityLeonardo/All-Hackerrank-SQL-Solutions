@@ -1,0 +1,24 @@
+# Solution in MSSQL
+
+WITH enumerate as (
+
+SELECT
+        X,
+        Y,
+        ROW_NUMBER() OVER(ORDER BY X,Y) as rn
+FROM    Functions f
+
+)
+ 
+SELECT
+        DISTINCT
+        e.X,
+        e.Y
+FROM    enumerate e
+-- first condition: X1 = Y2
+JOIN    enumerate e2 ON e.X = e2.Y 
+-- second condition: X2 = Y1
+AND e2.X = e.Y
+AND e.rn <> e2.rn
+WHERE e.X <= e.Y
+ORDER BY X,Y
