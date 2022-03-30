@@ -1,0 +1,12 @@
+# Solution in MSSQL
+
+WITH avg as (
+
+SELECT 
+        AVG(CAST(SALARY as DECIMAL(10,2))) as Salary, 
+        AVG(CAST(REPLACE(SALARY,'0','') as DECIMAL(10,2))) as Salary_no_zeros 
+FROM EMPLOYEES
+    
+)
+
+SELECT CEILING(Salary - Salary_no_zeros) FROM avg;
